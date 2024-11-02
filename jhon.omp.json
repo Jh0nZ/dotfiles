@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "palette": {
+    "os": "#ACB0BE",
+    "closer": "p:os",
+    "pink": "#F4B8E4",
+    "lavender": "#BABBF1",
+    "blue": "#8CAAEE"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "python",
+          "style": "plain",
+          "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{.Venv}}) {{ end }}{{ .Full }}{{ end }}",
+          "properties": {
+            "fetch_version": false
+          },
+          "foreground": "white"
+        },
+        {
+          "foreground": "p:blue",
+          "style": "plain",
+          "template": "{{.Icon}}",
+          "type": "os"
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "template": "%",
+          "foreground": "red"
+        },
+        {
+          "foreground": "p:blue",
+          "type": "session",
+          "style": "plain",
+          "template": " {{.UserName}} "
+        },
+        {
+          "type": "path",
+          "foreground": "p:pink",
+          "style": "plain",
+          "template": "\udb80\ude4b {{ .Path }} ",
+          "properties": {
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "template": "{{.UpstreamIcon}} {{.HEAD}} {{.BranchStatus}}{{if .Working.Changed}} \uf044 ({{.Working.String}}){{end}} {{if gt .StashCount 0}} \ued95  {{.StashCount}}{{end}} ",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "foreground": "white"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": ">",
+          "foreground": "p:pink"
+        }
+      ],
+      "type": "prompt"
+    }
+  ]
+}
